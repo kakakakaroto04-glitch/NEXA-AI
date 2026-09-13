@@ -5,6 +5,8 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '100kb' }));
+app.use(express.static('.'));
+app.get('/', (req, res) => res.sendFile('index.html', { root: '.' }));
 
 const PORT = process.env.PORT || 3000;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
